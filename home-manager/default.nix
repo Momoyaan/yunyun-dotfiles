@@ -34,6 +34,11 @@
     # feel free to add your own or remove some of them
     firefox
     neofetch
+    droidcam
+    obs-studio
+    qbittorrent
+    elisa
+    vscodium
     # archives
     zip
     unzip
