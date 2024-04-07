@@ -10,6 +10,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = inputs@{ nixpkgs, home-manager, aagl, ... }: {
@@ -23,13 +28,15 @@
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+                users.yunyun.imports = [ ./home-manager/default.nix  ];
+              };
 
-            # TODO replace ryan with your own username
-            home-manager.users.yunyun = import ./home-manager/default.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
         {
           imports = [ aagl.nixosModules.default ];
@@ -38,6 +45,9 @@
           programs.honkers-railway-launcher.enable = true;
         }
         ];
+	specialArgs = {
+	  inherit inputs;
+	};
       };
     };
   };

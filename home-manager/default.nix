@@ -1,9 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, lib, super, ... }:
 {
   
   imports = [
    ./mpv
+   ./neovim.nix
+
+   inputs.nixvim.homeManagerModules.nixvim
   ];
+
   # TODO please change the username & home directory to your own
   home.username = "yunyun";
   home.homeDirectory = "/home/yunyun";
