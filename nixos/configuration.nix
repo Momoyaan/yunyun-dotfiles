@@ -12,9 +12,13 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    };
 
+  chaotic.nyx.cache.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -49,6 +53,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+  programs.kdeconnect.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -115,6 +120,9 @@
      curl
      wget
      v4l-utils
+     nil
+     deadnix
+     statix
   ];
 
 
@@ -132,6 +140,15 @@
   # Enable the OpenSSH daemon.
     services.openssh.enable = true;
 
+  networking.firewall = { 
+    enable = true;
+    allowedTCPPortRanges = [ 
+      { from = 1714; to = 1764; } # KDE Connect
+    ];  
+    allowedUDPPortRanges = [ 
+      { from = 1714; to = 1764; } # KDE Connect
+    ];  
+  };  
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

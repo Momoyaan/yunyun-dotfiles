@@ -3,7 +3,8 @@
   
   imports = [
    ./mpv
-   ./neovim.nix
+   ./editors/helix
+   ./editors/neovim
 
    inputs.nixvim.homeManagerModules.nixvim
   ];
@@ -33,12 +34,17 @@
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
     firefox
-    neofetch
+    fastfetch
     droidcam
     obs-studio
     qbittorrent
     elisa
     vscodium
+    kdenlive
+    foliate
+    libreoffice-fresh
+    armcord
+    easyeffects
     # archives
     zip
     unzip
@@ -49,8 +55,6 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
-    armcord
-    easyeffects
     # misc
     cowsay
     file

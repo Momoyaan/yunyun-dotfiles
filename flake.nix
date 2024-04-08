@@ -14,15 +14,18 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    helix.url = "github:helix-editor/helix";
 
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, aagl, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, aagl, chaotic, ... }: {
     nixosConfigurations = {
       yunyun = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/user.nix
+          chaotic.nixosModules.default
 
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
