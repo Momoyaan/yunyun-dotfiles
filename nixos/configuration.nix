@@ -51,9 +51,29 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  programs.kdeconnect.enable = true;
+  #services.xserver.displayManager.sddm.wayland.enable = true;
+  #services.desktopManager.plasma6.enable = true;
+
+  # Gnome
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+environment.gnome.excludePackages = (with pkgs; [
+  gnome-photos
+  gnome-tour
+]) ++ (with pkgs.gnome; [
+  cheese # webcam tool
+  gnome-music
+  epiphany # web browser
+  geary # email reader
+  evince # document viewer
+  gnome-characters
+  totem # video player
+  tali # poker game
+  iagno # go game
+  hitori # sudoku game
+  atomix # puzzle game
+]);
+
 
   # Configure keymap in X11
   services.xserver = {
@@ -111,6 +131,7 @@
      noto-fonts-cjk
      noto-fonts-emoji
      nerdfonts
+     inter
   ];
 
   # List packages installed in system profile. To search, run:
@@ -123,6 +144,14 @@
      nil
      deadnix
      statix
+     gnome.gnome-tweaks
+     gnomeExtensions.blur-my-shell
+     gnomeExtensions.dash-to-dock
+     gnomeExtensions.gsconnect
+     gnomeExtensions.user-themes
+     gnomeExtensions.vitals
+     gnomeExtensions.just-perfection
+     gnomeExtensions.tray-icons-reloaded
   ];
 
 

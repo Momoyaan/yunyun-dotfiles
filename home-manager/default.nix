@@ -38,7 +38,6 @@
     droidcam
     obs-studio
     qbittorrent
-    elisa
     vscodium
     kdenlive
     foliate
@@ -123,6 +122,7 @@
       selection.save_to_clipboard = true;
     };
   };
+
 
 
 
