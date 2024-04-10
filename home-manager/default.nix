@@ -44,6 +44,8 @@
     libreoffice-fresh
     armcord
     easyeffects
+    komikku
+    mission-center
     # archives
     zip
     unzip

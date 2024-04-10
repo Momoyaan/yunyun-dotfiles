@@ -152,6 +152,9 @@ environment.gnome.excludePackages = (with pkgs; [
      gnomeExtensions.vitals
      gnomeExtensions.just-perfection
      gnomeExtensions.tray-icons-reloaded
+     gnomeExtensions.forge
+     whitesur-gtk-theme
+     whitesur-icon-theme
   ];
 
 
