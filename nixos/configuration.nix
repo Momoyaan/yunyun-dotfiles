@@ -18,7 +18,6 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     };
 
-  chaotic.nyx.cache.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -49,30 +48,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  #services.xserver.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
-
-  # Gnome
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-environment.gnome.excludePackages = (with pkgs; [
-  gnome-photos
-  gnome-tour
-]) ++ (with pkgs.gnome; [
-  cheese # webcam tool
-  gnome-music
-  epiphany # web browser
-  geary # email reader
-  evince # document viewer
-  gnome-characters
-  totem # video player
-  tali # poker game
-  iagno # go game
-  hitori # sudoku game
-  atomix # puzzle game
-]);
 
 
   # Configure keymap in X11
@@ -144,15 +119,6 @@ environment.gnome.excludePackages = (with pkgs; [
      nil
      deadnix
      statix
-     gnome.gnome-tweaks
-     gnomeExtensions.blur-my-shell
-     gnomeExtensions.dash-to-dock
-     gnomeExtensions.gsconnect
-     gnomeExtensions.user-themes
-     gnomeExtensions.vitals
-     gnomeExtensions.just-perfection
-     gnomeExtensions.tray-icons-reloaded
-     gnomeExtensions.forge
      whitesur-gtk-theme
      whitesur-icon-theme
   ];
