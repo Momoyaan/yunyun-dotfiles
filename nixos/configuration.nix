@@ -18,7 +18,6 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     };
 
-  chaotic.nyx.cache.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -33,46 +32,26 @@
   time.timeZone = "Asia/Manila";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_PH.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fil_PH";
-    LC_IDENTIFICATION = "fil_PH";
-    LC_MEASUREMENT = "fil_PH";
-    LC_MONETARY = "fil_PH";
-    LC_NAME = "fil_PH";
-    LC_NUMERIC = "fil_PH";
-    LC_PAPER = "fil_PH";
-    LC_TELEPHONE = "fil_PH";
-    LC_TIME = "fil_PH";
+    LANG = "en_US.UTF-8";
+    LC_COLLATE = "en_US.UTF-8";
+    LC_CTYPE = "en_US.UTF-8";
+    LC_MESSAGES = "en_US.UTF-8";
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  #services.xserver.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
-
-  # Gnome
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-environment.gnome.excludePackages = (with pkgs; [
-  gnome-photos
-  gnome-tour
-]) ++ (with pkgs.gnome; [
-  cheese # webcam tool
-  gnome-music
-  epiphany # web browser
-  geary # email reader
-  evince # document viewer
-  gnome-characters
-  totem # video player
-  tali # poker game
-  iagno # go game
-  hitori # sudoku game
-  atomix # puzzle game
-]);
 
 
   # Configure keymap in X11
@@ -144,15 +123,6 @@ environment.gnome.excludePackages = (with pkgs; [
      nil
      deadnix
      statix
-     gnome.gnome-tweaks
-     gnomeExtensions.blur-my-shell
-     gnomeExtensions.dash-to-dock
-     gnomeExtensions.gsconnect
-     gnomeExtensions.user-themes
-     gnomeExtensions.vitals
-     gnomeExtensions.just-perfection
-     gnomeExtensions.tray-icons-reloaded
-     gnomeExtensions.forge
      whitesur-gtk-theme
      whitesur-icon-theme
   ];
