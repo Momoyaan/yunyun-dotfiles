@@ -1,5 +1,4 @@
-{ ... }: {
-
+{...}: {
   imports = [
     ./configuration.nix
     ./qt.nix
@@ -7,8 +6,6 @@
     ./zsh.nix
     ./greetd.nix
     ./amd.nix
+    ./jellyfin.nix
   ];
-
-
 }
-

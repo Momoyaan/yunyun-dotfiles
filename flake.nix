@@ -40,6 +40,10 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix";
+
+    yazi.url = "github:sxyazi/yazi";
   };
 
   outputs = inputs @ {

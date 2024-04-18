@@ -1,22 +1,23 @@
 # Edit this configuration file to define what should be installed on
-
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ../hosts/hardware.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ../hosts/hardware.nix
+  ];
 
   # Bootloader.
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -53,7 +54,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -85,49 +85,52 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
-    "experimental-features = nix-command flakes";
+    extraOptions =
+      lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes";
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
-      };
     };
+  };
 
   nix.settings = {
-    substituters = [ "https://ezkea.cachix.org" ];
-    trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
+    substituters = ["https://ezkea.cachix.org"];
+    trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
   };
 
   fonts.packages = with pkgs; [
-     noto-fonts
-     noto-fonts-cjk
-     noto-fonts-emoji
-     nerdfonts
-     inter
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    nerdfonts
+    inter
   ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     git
-     curl
-     wget
-     v4l-utils
-     nil
-     deadnix
-     statix
-     whitesur-gtk-theme
-     whitesur-icon-theme
+    git
+    curl
+    wget
+    v4l-utils
+    nil
+    deadnix
+    statix
   ];
 
-
+  environment.sessionVariables = {
+    XDG_SESSION_TYPE = "wayland";
+    GDK_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+  };
+  users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -140,17 +143,24 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
+  services.openssh.enable = true;
 
-  networking.firewall = { 
+  networking.firewall = {
     enable = true;
-    allowedTCPPortRanges = [ 
-      { from = 1714; to = 1764; } # KDE Connect
-    ];  
-    allowedUDPPortRanges = [ 
-      { from = 1714; to = 1764; } # KDE Connect
-    ];  
-  };  
+    allowPing = true;
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      } # KDE Connect
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      } # KDE Connect
+    ];
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -164,5 +174,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
