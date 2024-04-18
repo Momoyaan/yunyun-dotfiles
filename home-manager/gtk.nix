@@ -13,7 +13,11 @@
 
   gtk = {
     enable = true;
-
+    catppuccin = {
+      enable = true;
+      flavour = "mocha";
+      accent = "rosewater";
+    };
     font = {
       name = "Inter";
       package = pkgs.google-fonts.override {fonts = ["Inter"];};
@@ -25,11 +29,6 @@
     iconTheme = {
       name = "Adwaita";
       package = pkgs.gnome.adwaita-icon-theme;
-    };
-
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
     };
   };
 }

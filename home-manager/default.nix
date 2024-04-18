@@ -1,20 +1,28 @@
-{ config, pkgs, inputs, lib, super, self, ... }:
 {
-  
+  config,
+  pkgs,
+  inputs,
+  lib,
+  super,
+  self,
+  ...
+}: {
   imports = [
-   inputs.hyprlock.homeManagerModules.default
-   inputs.hypridle.homeManagerModules.default
-   inputs.hyprpaper.homeManagerModules.default
-   ./mpv
-   ./editors/helix
-   ./editors/neovim
-   ./anyrun
-   ./terminal
-   ./wayland
-   ./ags
-   ./gtk.nix
+    inputs.hyprlock.homeManagerModules.default
+    inputs.hypridle.homeManagerModules.default
+    inputs.hyprpaper.homeManagerModules.default
+    inputs.catppuccin.homeManagerModules.catppuccin
+    ./mpv
+    ./editors/helix
+    ./editors/neovim
+    ./anyrun
+    ./terminal
+    ./wayland
+    ./ags
+    ./gtk.nix
+    ./qt.nix
+    ./programs
   ];
-
   # TODO please change the username & home directory to your own
   home.username = "yunyun";
   home.homeDirectory = "/home/yunyun";
@@ -41,14 +49,13 @@
     # feel free to add your own or remove some of them
     firefox
     fastfetch
+    pfetch-rs
     droidcam
     obs-studio
     qbittorrent
-    vscodium
     kdenlive
     foliate
     libreoffice-fresh
-    vesktop
     easyeffects
     komikku
     musikcube
@@ -58,6 +65,7 @@
     bottles
     wineWowPackages.stableFull
     chromium
+    android-studio
     # archives
     zip
     unzip
@@ -73,7 +81,7 @@
     wl-clipboard
     wl-screenrec
     wf-recorder
-    libva-utils 
+    libva-utils
     ack
     # misc
     cowsay
@@ -85,7 +93,6 @@
     gawk
     zstd
     gnupg
-
     # nix related
     #
     # it provides the command `nom` works just like `nix`
@@ -93,7 +100,7 @@
     nix-output-monitor
 
     # productivity
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -110,6 +117,14 @@
     usbutils # lsusb
     dconf
     kdeconnect
+
+    #lang
+    jdk17
+    spring-boot-cli
+    maven
+    gradle
+    postman
+    nodejs_21
   ];
 
   # basic configuration of git, please change to your own
@@ -118,12 +133,6 @@
     userName = "Ian Mathew Aviso";
     userEmail = "ianmathewaviso@gmail.com";
   };
-
- 
-
-
-
-
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

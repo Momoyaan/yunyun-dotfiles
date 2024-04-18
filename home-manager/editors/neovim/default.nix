@@ -1,6 +1,8 @@
 {
+  lib,
   inputs,
   pkgs,
+  config,
   ...
 }: {
   imports = [inputs.neovim-flake.homeManagerModules.default];
@@ -34,7 +36,7 @@
         enable = true;
         name = "catppuccin";
         style = "mocha";
-        transparent = true;
+        transparent = false;
       };
       vim.terminal = {
         toggleterm = {
@@ -80,6 +82,16 @@
         zig.enable = false;
         svelte.enable = false;
         sql.enable = false;
+        java = let
+          jdtlsCache = "${config.xdg.cacheHome}/jdtls";
+        in {
+          enable = true;
+          lsp.package = [
+            "${lib.getExe pkgs.jdt-language-server}"
+            "-configuration ${jdtlsCache}/config"
+            "-data ${jdtlsCache}/workspace"
+          ];
+        };
         lua = {
           enable = true;
           lsp.neodev.enable = true;

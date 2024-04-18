@@ -8,6 +8,8 @@ in {
     ./emulators/kitty.nix
     ./shell/starship.nix
     ./shell/zsh.nix
+    ./programs/yazi
+    ./programs/tmux
   ];
 
   # add environment variables

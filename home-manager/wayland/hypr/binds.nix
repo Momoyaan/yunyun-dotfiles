@@ -31,8 +31,8 @@ in {
         # compositor commands
         "$mod SHIFT, E, exec, pkill Hyprland"
         "$mod SHIFT, Q, killactive,"
-        "$mod, D, exec, anyrun" 
-        "$mod, F, fullscreen,"
+        "$mod, D, exec, anyrun"
+        "$mod, F, fullscreen, 1"
         "$mod, G, togglegroup,"
         "$mod SHIFT, N, changegroupactive, f"
         "$mod SHIFT, P, changegroupactive, b"
@@ -115,4 +115,3 @@ in {
     ];
   };
 }
-
