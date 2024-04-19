@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./vesktop
+    ./cider
+    ./vscodium
+  ];
+}

@@ -1,0 +1,13 @@
+{...}: {
+  imports = [
+    ./configuration.nix
+    ./qt.nix
+    ./xdg.nix
+    ./zsh.nix
+    ./greetd.nix
+    ./amd.nix
+    ./jellyfin.nix
+    ./adb.nix
+    ./mtp.nix
+  ];
+}
