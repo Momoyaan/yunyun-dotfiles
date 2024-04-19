@@ -60,6 +60,10 @@ in {
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
 
+        "$mod SHIFT, left, movewindow, l"
+        "$mod SHIFT, right, movewindow, r"
+        "$mod SHIFT, up, movewindow, u"
+        "$mod SHIFT, down, movewindow, d"
         # screenshot
         # stop animations while screenshotting; makes black border go away
         ", Print, exec, ${screenshotarea}"
