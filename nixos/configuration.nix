@@ -145,6 +145,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  programs.seahorse.enable = true;
+
   networking.firewall = {
     enable = true;
     allowPing = true;
