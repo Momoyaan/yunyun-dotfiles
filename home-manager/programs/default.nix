@@ -3,5 +3,6 @@
     ./vesktop
     ./cider
     ./vscodium
+    ./vivaldi
   ];
 }
