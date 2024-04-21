@@ -148,17 +148,28 @@
   networking.firewall = {
     enable = true;
     allowPing = true;
+    allowedUDPPorts = [
+      5353
+    ];
     allowedTCPPortRanges = [
       {
         from = 1714;
         to = 1764;
       } # KDE Connect
+      {
+        from = 42000;
+        to = 42001;
+      }
     ];
     allowedUDPPortRanges = [
       {
         from = 1714;
         to = 1764;
       } # KDE Connect
+      {
+        from = 42000;
+        to = 42001;
+      }
     ];
   };
   # Open ports in the firewall.

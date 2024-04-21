@@ -21,6 +21,7 @@
     ./ags
     ./gtk.nix
     ./qt.nix
+    ./vivaldi.nix
     ./programs
   ];
   # TODO please change the username & home directory to your own
@@ -67,6 +68,7 @@
     wineWowPackages.stableFull
     chromium
     android-studio
+
     # archives
     zip
     unzip
@@ -117,6 +119,7 @@
     pciutils # lspci
     usbutils # lsusb
     kdeconnect
+    cinnamon.warpinator
     gamescope
 
     #lang
