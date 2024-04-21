@@ -31,7 +31,6 @@ in {
         # compositor commands
         "$mod SHIFT, E, exec, pkill Hyprland"
         "$mod SHIFT, Q, killactive,"
-        "$mod, D, exec, anyrun"
         "$mod, F, fullscreen, 1"
         "$mod, G, togglegroup,"
         "$mod SHIFT, N, changegroupactive, f"
@@ -44,6 +43,7 @@ in {
 
         # utility
         "$mod, E, exec, nautilus"
+        "$mod, D, exec, anyrun"
         # terminal
         "$mod, SPACE, exec, kitty"
         "$mod, RETURN, exec, kitty"

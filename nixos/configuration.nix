@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -100,11 +101,6 @@
     };
   };
 
-  nix.settings = {
-    substituters = ["https://ezkea.cachix.org"];
-    trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
-  };
-
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -123,6 +119,8 @@
     nil
     deadnix
     statix
+    inputs.umu.packages.${pkgs.system}.umu
+    python3
   ];
 
   environment.sessionVariables = {
@@ -146,7 +144,7 @@
   services.openssh.enable = true;
 
   programs.seahorse.enable = true;
-
+  programs.dconf.enable = true; # required for gtk
   networking.firewall = {
     enable = true;
     allowPing = true;

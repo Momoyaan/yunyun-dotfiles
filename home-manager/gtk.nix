@@ -10,7 +10,7 @@
     gtk.enable = true;
     x11.enable = true;
   };
-
+  xdg.enable = true;
   gtk = {
     enable = true;
     catppuccin = {

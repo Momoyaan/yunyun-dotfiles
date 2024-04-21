@@ -116,8 +116,8 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
-    dconf
     kdeconnect
+    gamescope
 
     #lang
     jdk17
@@ -134,7 +134,6 @@
     userName = "Momoyaan";
     userEmail = "ianmathewaviso@gmail.com";
   };
-
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
