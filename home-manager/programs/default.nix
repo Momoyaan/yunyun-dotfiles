@@ -2,7 +2,7 @@
   imports = [
     ./vesktop
     ./cider
-    ./vscodium
     ./vivaldi
+    ./vscodium
   ];
 }

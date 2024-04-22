@@ -21,7 +21,6 @@
     ./ags
     ./gtk.nix
     ./qt.nix
-    ./vivaldi.nix
     ./programs
   ];
   # TODO please change the username & home directory to your own

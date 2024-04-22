@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  options,
   pkgs,
   inputs,
   ...
@@ -29,6 +30,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  networking.timeServers = options.networking.timeServers.default;
 
   # Set your time zone.
   time.timeZone = "Asia/Manila";
