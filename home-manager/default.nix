@@ -13,7 +13,6 @@
     inputs.hyprpaper.homeManagerModules.default
     inputs.catppuccin.homeManagerModules.catppuccin
     ./mpv
-    ./editors/helix
     ./editors/neovim
     ./anyrun
     ./terminal
