@@ -17,7 +17,6 @@
       url = "github:notashelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix.url = "github:helix-editor/helix";
 
     anyrun.url = "github:fufexan/anyrun";
 

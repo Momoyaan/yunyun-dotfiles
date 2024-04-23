@@ -66,6 +66,7 @@
     wineWowPackages.stableFull
     chromium
     android-studio
+    ventoy-full
 
     # archives
     zip
@@ -84,6 +85,7 @@
     wf-recorder
     libva-utils
     ack
+    pavucontrol
     # misc
     cowsay
     file
