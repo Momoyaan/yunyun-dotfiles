@@ -1,13 +1,13 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    vscodium
+    vscode
   ];
 
   xdg.desktopEntries = {
-    vscodium = {
-      name = "VSCodium";
-      exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland";
-      icon = "vscodium";
+    vscode = {
+      name = "vscode";
+      exec = "code --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      icon = "vscode";
       genericName = "Text Editor";
       categories = ["Network" "Application"];
     };
