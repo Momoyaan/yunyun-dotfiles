@@ -4,5 +4,6 @@
     ./cider
     ./vivaldi
     ./vscode
+    ./librewolf
   ];
 }
