@@ -1,6 +1,6 @@
 let
   screenshotarea = "hyprctl keyword animation 'fadeOut,0,0,default'; grimblast --notify copysave area; hyprctl keyword animation 'fadeOut,1,4,default'";
-
+  ocr = "grimblast copysave area - | tesseract - - | wl-copy ";
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   workspaces = builtins.concatLists (builtins.genList (
       x: let
@@ -52,7 +52,7 @@ in {
         # lock screen
         "$mod, L, exec, loginctl lock-session"
         # select area to perform OCR on
-        "$mod, O, exec, run-as-service wl-ocr"
+        "$mod, O, exec, ${ocr}"
 
         # move focus
         "$mod, left, movefocus, l"

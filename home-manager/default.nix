@@ -86,6 +86,7 @@
     libva-utils
     ack
     pavucontrol
+    tesseract
     # misc
     cowsay
     file
