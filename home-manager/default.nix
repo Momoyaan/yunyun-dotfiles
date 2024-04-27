@@ -130,6 +130,7 @@
     gradle
     postman
     nodejs_21
+    bun
   ];
 
   # basic configuration of git, please change to your own
