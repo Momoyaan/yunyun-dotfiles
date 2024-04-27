@@ -129,7 +129,7 @@
     maven
     gradle
     postman
-    nodejs_21
+    nodePackages_latest.nodejs
     bun
   ];
 
