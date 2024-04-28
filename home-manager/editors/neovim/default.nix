@@ -184,28 +184,6 @@
           enable = true;
         };
       };
-      vim.filetree = {
-        nvimTree = {
-          enable = true;
-          openOnSetup = true;
-          disableNetrw = true;
-
-          mappings = {
-            toggle = "<C-w>";
-          };
-
-          git = {
-            enable = true;
-          };
-
-          view = {
-            cursorline = false;
-            width = 35;
-          };
-
-          diagnostics.enable = true;
-        };
-      };
       vim.lsp = {
         enable = true;
         formatOnSave = true;
