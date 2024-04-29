@@ -126,6 +126,10 @@
     python3
   ];
 
+  environment.variables = {
+    ROC_ENABLE_PRE_VEGA = "1";
+  };
+
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
     GDK_BACKEND = "wayland";
