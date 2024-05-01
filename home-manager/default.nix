@@ -49,6 +49,7 @@
     firefox
     fastfetch
     pfetch-rs
+    nitch
     droidcam
     obs-studio
     qbittorrent
@@ -67,6 +68,7 @@
     chromium
     android-studio
     ventoy-full
+    zed-editor
 
     # archives
     zip
@@ -80,6 +82,7 @@
     fzf # A command-line fuzzy finder
     grim
     slurp
+    corectrl
     wl-clipboard
     wl-screenrec
     wf-recorder
@@ -97,6 +100,7 @@
     gawk
     zstd
     gnupg
+    clinfo
     # nix related
     #
     # it provides the command `nom` works just like `nix`
@@ -131,6 +135,7 @@
     postman
     nodePackages_latest.nodejs
     bun
+    conda
   ];
 
   # basic configuration of git, please change to your own
