@@ -12,6 +12,8 @@
 
     anyrun.url = "github:fufexan/anyrun";
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +31,10 @@
         extraSpecialArgs = { inherit inputs; };
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
+        nix.settings = {
+          substituters = ["https://hyprland.cachix.org"];
+          trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+        };
         modules = [ ./home.nix ];
 
         # Optionally use extraSpecialArgs

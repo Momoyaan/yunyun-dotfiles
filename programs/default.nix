@@ -2,8 +2,9 @@
   imports = [
     ./vesktop
     ./ags
-    ./hyprpaper
     ./anyrun
+    ./feishin
+    ./mpv
   ];
 
   home.packages = with pkgs; [
