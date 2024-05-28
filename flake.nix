@@ -18,12 +18,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+    };
+
   };
 
   outputs = inputs @ {
     nixpkgs,
     home-manager,
     aagl,
+    apple-fonts,
     ...
   }: {
     nixosConfigurations = {
