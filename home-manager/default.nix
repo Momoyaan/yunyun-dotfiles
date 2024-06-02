@@ -52,7 +52,9 @@
     mission-center
     nwg-look
     bottles
-    wineWowPackages.stableFull
+    wineWowPackages.stagingFull
+    winetricks
+    dxvk
     chromium
     android-studio
     zed-editor
@@ -65,6 +67,11 @@
     gradience
     adw-gtk3
     whitesur-icon-theme
+    flameshot
+    python312Packages.deemix
+    upscayl
+    nicotine-plus
+
     # archives
     zip
     unzip
@@ -77,6 +84,9 @@
     fzf # A command-line fuzzy finder
     libva-utils
     ack
+    tesseract
+    lazygit
+    gamemode
     # misc
     cowsay
     file
@@ -111,12 +121,15 @@
     usbutils # lsusb
     dconf
     kdeconnect
+    wl-clipboard
 
     #lang
+    rustup
     nodePackages_latest.nodejs
     typescript
     nodePackages_latest.typescript-language-server
     eslint_d
+    bun
   ];
 
   # basic configuration of git, please change to your own

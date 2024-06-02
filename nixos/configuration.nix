@@ -6,7 +6,6 @@
 
 {
 
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions =
@@ -62,6 +61,8 @@
     xkbVariant = "";
   };
 
+  services.flatpak.enable = true;
+
   # Enable CUPS to print documents.
   #services.printing.enable = true;
 
@@ -109,10 +110,15 @@
      inputs.apple-fonts.packages.x86_64-linux.sf-pro
   ];
 
-  environment.variables = {
-    FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
-    EDITOR="nvim";
-    VISUAL="nvim";
+  environment = {
+    variables = {
+      FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+      EDITOR="nvim";
+      VISUAL="nvim";
+    };
+    sessionVariables = {
+      NIXOS_OZONE_WL="1";
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

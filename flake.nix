@@ -22,13 +22,13 @@
       url = "github:Lyndeno/apple-fonts.nix";
     };
 
+
   };
 
   outputs = inputs @ {
     nixpkgs,
     home-manager,
     aagl,
-    apple-fonts,
     ...
   }: {
     nixosConfigurations = {
@@ -39,6 +39,7 @@
 
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
