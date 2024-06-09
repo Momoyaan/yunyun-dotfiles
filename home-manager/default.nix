@@ -71,6 +71,9 @@
     python312Packages.deemix
     upscayl
     nicotine-plus
+    corectrl
+    dissent
+    dbeaver-bin
 
     # archives
     zip
@@ -87,6 +90,9 @@
     tesseract
     lazygit
     gamemode
+    scrcpy
+    android-tools 
+    sunshine
     # misc
     cowsay
     file

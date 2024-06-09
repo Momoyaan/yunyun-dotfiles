@@ -6,6 +6,6 @@
     ./vesktop
     ./cider
     #./vscodium
-    ./feishin
+    #./feishin
   ];
 }

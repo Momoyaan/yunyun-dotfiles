@@ -21,7 +21,7 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -89,10 +89,10 @@
   zramSwap.enable = true;
 
   fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "UbuntuMono" "JetBrainsMono" ]; })
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    nerdfonts
     inter
   ];
 
