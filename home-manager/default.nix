@@ -61,9 +61,9 @@
     vscode
     floorp
     blackbox-terminal
-    #gnome.gnome-tweaks
-    #gnomeExtensions.gsconnect
-    #gnomeExtensions.blur-my-shell
+    gnome.gnome-tweaks
+    gnomeExtensions.gsconnect
+    gnomeExtensions.blur-my-shell
     gradience
     adw-gtk3
     whitesur-icon-theme
