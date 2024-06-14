@@ -55,13 +55,16 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
-  services.flatpak.enable = true;
+  services = { 
+    displayManager.sddm.wayland.enable = true;
+    desktopManager.plasma6.enable = true;
+    flatpak.enable = true;
+  };
+
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
@@ -94,6 +97,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     inter
+    helvetica-neue-lt-std
   ];
 
   programs.zsh.enable = true;
@@ -107,7 +111,6 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-     inputs.apple-fonts.packages.x86_64-linux.sf-pro
   ];
 
   environment = {
@@ -119,6 +122,12 @@
     sessionVariables = {
       NIXOS_OZONE_WL="1";
     };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
   };
 
   # Some programs need SUID wrappers, can be configured further or are

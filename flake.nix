@@ -18,10 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    apple-fonts = {
-      url = "github:Lyndeno/apple-fonts.nix";
-    };
-
   };
 
   outputs = inputs @ {
@@ -42,7 +38,7 @@
             home-manager = {
               useUserPackages = true;
               useGlobalPkgs = true;
-              backupFileExtension = "backup1";
+              backupFileExtension = "backup2";
               extraSpecialArgs = {
                 inherit inputs;
               };

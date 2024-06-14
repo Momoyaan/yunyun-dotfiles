@@ -61,9 +61,9 @@
     vscode
     floorp
     blackbox-terminal
-    gnome.gnome-tweaks
-    gnomeExtensions.gsconnect
-    gnomeExtensions.blur-my-shell
+    #gnome.gnome-tweaks
+    #gnomeExtensions.gsconnect
+    #gnomeExtensions.blur-my-shell
     gradience
     adw-gtk3
     whitesur-icon-theme
@@ -74,7 +74,8 @@
     corectrl
     dissent
     dbeaver-bin
-
+    picard
+    transgui
     # archives
     zip
     unzip
@@ -103,6 +104,7 @@
     gawk
     zstd
     gnupg
+    zellij
     # nix related
     #
     # it provides the command `nom` works just like `nix`
@@ -130,6 +132,7 @@
     wl-clipboard
 
     #lang
+    go
     rustup
     nodePackages_latest.nodejs
     typescript

@@ -24,11 +24,6 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/hdd" =
-    { device = "/dev/disk/by-uuid/03a0887d-ac5e-432c-a33d-586d86df923a";
-      fsType = "ext4";
-    };
-
   fileSystems."/mnt/ssd" =
     { device = "/dev/disk/by-uuid/0078EAAF78EAA2A0";
       fsType = "ntfs";
