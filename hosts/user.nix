@@ -12,7 +12,7 @@
       isNormalUser = true;
       createHome = true;
       home = "/home/yunyun";
-      extraGroups = [ "wheel" "users" "audio" "video" "networkmanager" ];
+      extraGroups = [ "wheel" "users" "audio" "video" "networkmanager" "adbusers" ];
     };
   };
 }

@@ -8,8 +8,11 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  environment.systemPackages = with pkgs; [ nfs-utils ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
+  boot.initrd.supportedFilesystems = [ "nfs" ];
+  boot.kernelModules = [ "kvm-intel" "v4l2loopback" "nfs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelParams = ["mitigations=off"];
 
@@ -28,6 +31,29 @@
     { device = "/dev/disk/by-uuid/0078EAAF78EAA2A0";
       fsType = "ntfs";
     };
+
+  fileSystems."/mnt/ssd2" =
+    { device = "/dev/disk/by-uuid/94c448e9-5789-46b7-b956-bb7c0d96c299";
+      fsType = "btrfs";
+    };
+
+  fileSystems."/mnt/nfs" = 
+  {
+   device = "192.168.254.113:/mnt/media";
+   fsType = "nfs";
+   options = [
+      "x-gvfx-show"
+   ];
+  };
+
+  fileSystems."/mnt/nfs2" = 
+  {
+   device = "192.168.254.113:/mnt/media2";
+   fsType = "nfs";
+   options = [
+      "x-gvfx-show"
+   ];
+  };
 
   swapDevices = [ ];
 

@@ -1,6 +1,6 @@
 {
   imports = [
-    ./editors/neovim
+    #./editors/neovim
     ./mpv
     ./terminal
     ./vesktop

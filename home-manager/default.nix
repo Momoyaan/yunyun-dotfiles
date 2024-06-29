@@ -44,38 +44,40 @@
     droidcam
     obs-studio
     qbittorrent
-    kdenlive
-    foliate
+    #kdenlive
+    #foliate
     libreoffice-fresh
-    komikku
-    musikcube
+    #komikku
+    #musikcube
     mission-center
     nwg-look
     bottles
     wineWowPackages.stagingFull
     winetricks
     dxvk
-    chromium
-    android-studio
     zed-editor
     vscode
-    floorp
+    #floorp
     blackbox-terminal
     gnome.gnome-tweaks
     gnomeExtensions.gsconnect
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.forge
     gradience
     adw-gtk3
     whitesur-icon-theme
     flameshot
     python312Packages.deemix
-    upscayl
+    #upscayl
     nicotine-plus
     corectrl
-    dissent
     dbeaver-bin
     picard
     transgui
+    neovim
+    steam
+    steam-run
+    brave
     # archives
     zip
     unzip
@@ -132,6 +134,9 @@
     wl-clipboard
 
     #lang
+    temurin-bin
+    python3
+    gcc
     go
     rustup
     nodePackages_latest.nodejs

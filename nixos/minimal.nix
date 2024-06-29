@@ -4,6 +4,6 @@
     #./qt.nix
     #./xdg.nix
     #./zsh.nix
-    ./amd.nix
+   # ./amd.nix
   ];
 }

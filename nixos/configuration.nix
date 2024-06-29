@@ -55,6 +55,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
+    videoDrivers = [ "amdgpu" ];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     xkb.layout = "us";
@@ -132,6 +133,8 @@
     style = "adwaita-dark";
   };
 
+  programs.adb.enable = true;
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
