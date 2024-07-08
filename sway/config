@@ -92,6 +92,8 @@ input type:pointer {
 
     bindsym $mod+n exec swaync-client -t 
 
+    bindsym $mod+p exec hyprpicker -a 
+
     bindsym $mod+s exec grim -g "$(slurp)" - | swappy -f -
 
     bindsym $mod+t exec grim -g "$(slurp)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"

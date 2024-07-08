@@ -1,3 +1,4 @@
 
 [Default Applications]
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
