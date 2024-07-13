@@ -93,6 +93,8 @@ input type:pointer {
     bindsym $mod+n exec swaync-client -t 
 
     bindsym $mod+p exec hyprpicker -a 
+    
+    bindsym $mod+Shift+r exec wl-screenrec -g "$(slurp -o)" --codec hevc -b "3 MB" --low-power off --filename screenrec_$(date +%Y%m%d_%H_%M_%S).mp4 
 
     bindsym $mod+s exec grim -g "$(slurp)" - | swappy -f -
 
