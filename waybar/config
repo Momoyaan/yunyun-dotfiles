@@ -14,9 +14,9 @@
 	// If height property would be not present, it'd be calculated dynamically
 	"height": 30,
 	"modules-left": [
-		"sway/workspaces",
-		"sway/mode",
-		"sway/window"
+		"river/mode",
+		"river/tags",
+		"river/window"
 	],
 	"modules-center": [
 		"tray",
@@ -95,18 +95,24 @@
 		"format-disconnected": "⚠  Disconnected",
 		"tooltip-format": "{ifname}: {ipaddr}"
 	},
-	"sway/mode": {
+	"river/mode": {
 		"format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
 		"tooltip": false
 	},
-	"sway/window": {
+	"river/window": {
 		"format": "{}",
 		"max-length": 120
 	},
-	"sway/workspaces": {
-		"all-outputs": false,
-		"disable-scroll": true,
-	},
+"river/tags": {
+    "num-tags": 5,
+    "set-tags": [
+      2147483649,
+      2147483650,
+      2147483652,
+      2147483656,
+      2147483664
+    ]
+},
 	//"pulseaudio": {
 	//    //"scroll-step": 1,
 	//    "format": "{icon}  {volume}%",
