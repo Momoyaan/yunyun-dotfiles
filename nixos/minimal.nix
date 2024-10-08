@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./configuration.nix
-    #./gonic.nix
+    ./nvf.nix
+    ./services
   ];
 }

@@ -98,87 +98,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  services.nfs.server.enable = true;
-  services.nfs.server.exports = ''
-    /export         192.168.254.107(rw,fsid=0,insecure,no_subtree_check)
-    /export/media   192.168.254.107(rw,nohide,insecure,no_subtree_check) 
-    /export/media2  192.168.254.107(rw,nohide,insecure,no_subtree_check)
-  '';
 
-    services = {
-      # Network shares
-      samba = {
-        package = pkgs.samba4Full;
-        # ^^ `samba4Full` is compiled with avahi, ldap, AD etc support (compared to the default package, `samba`
-        # Required for samba to register mDNS records for auto discovery 
-        # See https://github.com/NixOS/nixpkgs/blob/592047fc9e4f7b74a4dc85d1b9f5243dfe4899e3/pkgs/top-level/all-packages.nix#L27268
-        enable = true;
-        openFirewall = true;
-        shares.testshare = {
-          path = "/export";
-          writable = "true";
-          comment = "Hello World!";
-        };
-      };
-      avahi = {
-        publish.enable = true;
-        publish.userServices = true;
-        # ^^ Needed to allow samba to automatically register mDNS records (without the need for an `extraServiceFile`
-        #nssmdns4 = true;
-        # ^^ Not one hundred percent sure if this is needed- if it aint broke, don't fix it
-        enable = true;
-        openFirewall = true;
-      };
-      samba-wsdd = {
-      # This enables autodiscovery on windows since SMB1 (and thus netbios) support was discontinued
-        enable = true;
-        openFirewall = true;
-      };
-    };
-
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "server";
-  };
-
-  services.gonic = {
-    enable = true;
-    settings = {
-      music-path = [ "/mnt/media/Music" ];
-      podcast-path = "/mnt/media/Music/podcast";
-      playlists-path = "/mnt/media/Music/playlists";
-      listen-addr = "0.0.0.0:4747";
-    };
-   };
  
-  services.transmission = {
-    enable = true;
-    user = "minipc";
-    group = "users";
-    openFirewall = true;
-    openRPCPort = true;
-    openPeerPorts = true;
-    settings = {
-      lpd-enabled = true;
-      dht-enabled = true;
-      pex-enabled = true;
-      utp-enabled = true;
-      bind-address-ipv4 = "0.0.0.0";
-      bind-address-ipv6 = "::1"; # Disable ipv6
-      rpc-bind-address = "0.0.0.0";
-      rpc-port = 9091;
-      rpc-url = "/transmission/rpc/";
-      rpc-whitelist-enabled = true;
-      rpc-host-whitelist-enabled = true;
-      rpc-authentication-required = false;
-      rpc-host-whitelist = "*";
-      rpc-whitelist = "*";
-      incomplete-dir = "/mnt/media/Downloads/.incomplete";
-      incomplete-dir-enabled = true;
-      download-dir = "/mnt/media/Downloads";
-    };
-  };
-
 
   # Open ports in the firewall.
   #networking.firewall.allowedTCPPorts = [ ... ];
