@@ -150,7 +150,36 @@
       listen-addr = "0.0.0.0:4747";
     };
    };
-  
+ 
+  services.transmission = {
+    enable = true;
+    user = "minipc";
+    group = "users";
+    openFirewall = true;
+    openRPCPort = true;
+    openPeerPorts = true;
+    settings = {
+      lpd-enabled = true;
+      dht-enabled = true;
+      pex-enabled = true;
+      utp-enabled = true;
+      bind-address-ipv4 = "0.0.0.0";
+      bind-address-ipv6 = "::1"; # Disable ipv6
+      rpc-bind-address = "0.0.0.0";
+      rpc-port = 9091;
+      rpc-url = "/transmission/rpc/";
+      rpc-whitelist-enabled = true;
+      rpc-host-whitelist-enabled = true;
+      rpc-authentication-required = false;
+      rpc-host-whitelist = "*";
+      rpc-whitelist = "*";
+      incomplete-dir = "/mnt/media/Downloads/.incomplete";
+      incomplete-dir-enabled = true;
+      download-dir = "/mnt/media/Downloads";
+    };
+  };
+
+
   # Open ports in the firewall.
   #networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -159,8 +188,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 4747 4000 4001 4002 20048 2049 111 139 445];
-    allowedUDPPorts = [ 4747 4000 4001 4002 20048 2049 111 137 138];
+    allowedTCPPorts = [ 4747 4000 4001 4002 20048 2049 111 139 445 9091 51413];
+    allowedUDPPorts = [ 4747 4000 4001 4002 20048 2049 111 137 138 51413];
     #allowedUDPPortRanges = [
     #  { from = 8000; to = 8010; }
     #];
