@@ -84,8 +84,13 @@
      beets
      neovim
      clang
+     unzip
      zig
      go
+     ripgrep
+     eza
+     yazi
+     
   ];
 
 
@@ -102,8 +107,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-
- 
+  users.defaultUserShell = pkgs.zsh;
 
   # Open ports in the firewall.
   #networking.firewall.allowedTCPPorts = [ ... ];

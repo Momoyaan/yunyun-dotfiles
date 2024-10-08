@@ -13,6 +13,14 @@
         styles = {"alias" = "fg=magenta";};
         highlighters = ["main" "brackets" "pattern"];
       };
+      shellAliases = {
+        ls = "eza";
+        ll = "eza -l";
+      };
+      interactiveShellInit = 
+        ''
+        fastfetch
+        '';
     };
   };
 }
