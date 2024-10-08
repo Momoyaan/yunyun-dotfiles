@@ -82,6 +82,10 @@
      btop
      streamrip
      beets
+     neovim
+     clang
+     zig
+     go
   ];
 
 
