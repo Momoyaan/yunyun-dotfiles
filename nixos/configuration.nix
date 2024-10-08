@@ -1,23 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, lib, ... }:
+
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  imports = [
-    # Include the results of the hardware scan.
-    ../hosts/hardware.nix
-  ];
+  imports =
+    [ # Include the results of the hardware scan.
+      ../hosts/hardware.nix
+    ];
 
   # Bootloader.
-  boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -33,61 +28,36 @@
   time.timeZone = "Asia/Manila";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_PH.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LANG = "en_US.UTF-8";
-    LC_COLLATE = "en_US.UTF-8";
-    LC_CTYPE = "en_US.UTF-8";
-    LC_MESSAGES = "en_US.UTF-8";
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_ADDRESS = "en_PH.UTF-8";
+    LC_IDENTIFICATION = "en_PH.UTF-8";
+    LC_MEASUREMENT = "en_PH.UTF-8";
+    LC_MONETARY = "en_PH.UTF-8";
+    LC_NAME = "en_PH.UTF-8";
+    LC_NUMERIC = "en_PH.UTF-8";
+    LC_PAPER = "en_PH.UTF-8";
+    LC_TELEPHONE = "en_PH.UTF-8";
+    LC_TIME = "en_PH.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
-
-  # Enable CUPS to print documents.
-  #services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+#  users.users.minipc = {
+#    isNormalUser = true;
+#    description = "minipc";
+#    extraGroups = [ "networkmanager" "wheel" ];
+#    packages = with pkgs; [];
+#  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions =
@@ -100,37 +70,20 @@
     };
   };
 
-  nix.settings = {
-    substituters = ["https://ezkea.cachix.org"];
-    trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
-  };
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    nerdfonts
-    inter
-  ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    git
-    curl
-    wget
-    v4l-utils
-    nil
-    deadnix
-    statix
+     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     wget
+     curl
+     git
+     fastfetch
+     onefetch
+     btop
+     streamrip
+     beets
   ];
 
-  environment.sessionVariables = {
-    XDG_SESSION_TYPE = "wayland";
-    GDK_BACKEND = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-  };
-  users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -145,27 +98,73 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  networking.firewall = {
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+    /export         192.168.254.107(rw,fsid=0,insecure,no_subtree_check)
+    /export/media   192.168.254.107(rw,nohide,insecure,no_subtree_check) 
+    /export/media2  192.168.254.107(rw,nohide,insecure,no_subtree_check)
+  '';
+
+    services = {
+      # Network shares
+      samba = {
+        package = pkgs.samba4Full;
+        # ^^ `samba4Full` is compiled with avahi, ldap, AD etc support (compared to the default package, `samba`
+        # Required for samba to register mDNS records for auto discovery 
+        # See https://github.com/NixOS/nixpkgs/blob/592047fc9e4f7b74a4dc85d1b9f5243dfe4899e3/pkgs/top-level/all-packages.nix#L27268
+        enable = true;
+        openFirewall = true;
+        shares.testshare = {
+          path = "/export";
+          writable = "true";
+          comment = "Hello World!";
+        };
+      };
+      avahi = {
+        publish.enable = true;
+        publish.userServices = true;
+        # ^^ Needed to allow samba to automatically register mDNS records (without the need for an `extraServiceFile`
+        #nssmdns4 = true;
+        # ^^ Not one hundred percent sure if this is needed- if it aint broke, don't fix it
+        enable = true;
+        openFirewall = true;
+      };
+      samba-wsdd = {
+      # This enables autodiscovery on windows since SMB1 (and thus netbios) support was discontinued
+        enable = true;
+        openFirewall = true;
+      };
+    };
+
+  services.tailscale = {
     enable = true;
-    allowPing = true;
-    allowedTCPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      } # KDE Connect
-    ];
-    allowedUDPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      } # KDE Connect
-    ];
+    useRoutingFeatures = "server";
   };
+
+  services.gonic = {
+    enable = true;
+    settings = {
+      music-path = [ "/mnt/media/Music" ];
+      podcast-path = "/mnt/media/Music/podcast";
+      playlists-path = "/mnt/media/Music/playlists";
+      listen-addr = "0.0.0.0:4747";
+    };
+   };
+  
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  #networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 4747 4000 4001 4002 20048 2049 111 139 445];
+    allowedUDPPorts = [ 4747 4000 4001 4002 20048 2049 111 137 138];
+    #allowedUDPPortRanges = [
+    #  { from = 8000; to = 8010; }
+    #];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -173,5 +172,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
+
 }

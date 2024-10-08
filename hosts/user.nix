@@ -6,16 +6,16 @@
 
   imports = [
     ../nixos/minimal.nix
-    ./hardware.nix
   ];
 
 
   users = {
-    users.yunyun = {
+    users.minipc= {
       isNormalUser = true;
+      description = "minipc";
       createHome = true;
-      home = "/home/yunyun";
-      extraGroups = [ "wheel" "users" "audio" "video" "networkmanager" ];
+      home = "/home/minipc";
+      extraGroups = [ "wheel" "users" "networkmanager" ];
     };
   };
 }
