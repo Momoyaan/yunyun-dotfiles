@@ -82,6 +82,7 @@
      btop
      streamrip
      beets
+     mediainfo
      neovim
      clang
      unzip
@@ -89,6 +90,8 @@
      go
      ripgrep
      eza
+     nodejs
+     bun
      yazi
      
   ];
