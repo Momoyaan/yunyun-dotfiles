@@ -1,11 +1,10 @@
 {
   imports = [
     ./gonic
-    #./navidrome
-    #./slskd
     ./nfs
     ./samba
-    ./transmission
     ./tailscale
+    ./sonarr
+    ./aria2
   ];
 }

@@ -79,6 +79,7 @@
      git
      fastfetch
      onefetch
+     nmap
      btop
      streamrip
      beets
