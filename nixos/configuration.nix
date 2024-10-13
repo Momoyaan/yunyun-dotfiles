@@ -121,8 +121,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 4747 4000 4001 4002 20048 2049 111 139 445 9091 51413];
-    allowedUDPPorts = [ 4747 4000 4001 4002 20048 2049 111 137 138 51413];
+    allowedTCPPorts = [53 4747 4000 4001 4002 20048 2049 111 139 445 8000 9091 51413];
+    allowedUDPPorts = [53 4747 4000 4001 4002 20048 2049 111 137 138 51413];
     #allowedUDPPortRanges = [
     #  { from = 8000; to = 8010; }
     #];

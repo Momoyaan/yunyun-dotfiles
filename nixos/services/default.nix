@@ -6,5 +6,8 @@
     ./tailscale
     ./sonarr
     ./aria2
+    ./adguard-home
+    ./jellyfin
+    ./komga
   ];
 }
