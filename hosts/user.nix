@@ -5,9 +5,9 @@
 {
 
   imports = [
+    ./hardware.nix
     ../nixos/minimal.nix
   ];
-
 
   users = {
     users.minipc= {

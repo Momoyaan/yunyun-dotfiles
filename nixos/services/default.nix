@@ -1,6 +1,7 @@
 {
   imports = [
-    ./gonic
+    # ./gonic
+    ./navidrome
     ./nfs
     ./samba
     ./tailscale
@@ -9,5 +10,6 @@
     ./adguard-home
     ./jellyfin
     ./komga
+    ./open-webui
   ];
 }
